@@ -25,7 +25,7 @@ build:
         code: |
           go build -o wercker-sample ./src/...
 
-    i# Test the project
+    # Test the project
     - script:
         name: go test
         code: |
