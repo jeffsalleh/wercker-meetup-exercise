@@ -7,8 +7,8 @@ dev:
   steps:
     - internal/watch:
         code: |
-          go build -o wercker-sample ./src/...
-          ./wercker-sample
+          go build ./...
+          ./source
         reload: true
 
 # Build definition
@@ -23,14 +23,14 @@ build:
     - script:
         name: go build
         code: |
-          go build -o wercker-sample ./src/...
+          go build ./...
 
     # Test the project
     - script:
         name: go test
         code: |
-          go test ./src/...
-              
+          go test ./...
+
 # Deployment push to dockerhub
 push-docker:
   steps:
@@ -38,8 +38,9 @@ push-docker:
         username: $dockerhub_username
         password: $dockerhub_password
         repository: $dockerhub_username/wercker-sg-meetup
-        ports: "8080"
+        ports: "8080"        
         registry: https://registry.hub.docker.com/v2
+        #cmd: ./wercker-sample
 
 # Deploy to some container cloud (Google)
 
@@ -51,8 +52,5 @@ deploy-occs:
         occs_password: $OCCS_PASSWORD
         rest_server_url: $OCCS_REST_SERVER_URL
         function: stop
-        deployment_name: wercker-meetup
+        deployment_name: /wercker-sg-meetup
  
-
-
-
