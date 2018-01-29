@@ -31,6 +31,10 @@ build:
         code: |
           go test ./...
 
+    - script:
+        name: copy binary
+        code: cp source "$WERCKER_OUTPUT_DIR"
+
 # Deployment push to dockerhub
 push-docker:
   steps:
