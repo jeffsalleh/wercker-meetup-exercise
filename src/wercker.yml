@@ -1,0 +1,51 @@
+box:
+  id: golang
+  ports:
+    - "5000"
+
+dev:
+  steps:
+    - internal/watch:
+        code: |
+          go build ./...
+          ./source
+        reload: true
+
+# Build definition
+build:
+  # The steps that will be executed on build
+  steps:
+
+    # golint step!
+    - wercker/golint
+
+    # Build the project
+    - script:
+        name: go build
+        code: |
+          go build ./...
+
+    # Test the project
+    - script:
+        name: go test
+        code: |
+          go test ./...
+
+# Deployment push to dockerhub
+push-docker:
+  steps:
+    - internal/docker-push:
+        username: $username
+        password: $password
+        repository: $username/wercker-sg-meetup
+        ports: "8080"
+        registry: https://registry.hub.docker.com/v2
+
+# Deploy to some container cloud (Google)
+
+# Deploy to Oracle Container Cloud service
+
+# 
+
+
+
