@@ -38,19 +38,19 @@ push-docker:
         username: $dockerhub_username
         password: $dockerhub_password
         repository: $dockerhub_username/wercker-sg-meetup
-        ports: "8080"        
+        ports: "5000"        
         registry: https://registry.hub.docker.com/v2
-        #cmd: ./wercker-sample
+        cmd: ./source
 
 # Deploy to some container cloud (Google)
 
 # Deploy to Oracle Container Cloud service
-deploy-occs:
-  steps:
-    - peternagy/oracle-occs-container-util:
-        occs_user: $OCCS_USERNAME
-        occs_password: $OCCS_PASSWORD
-        rest_server_url: $OCCS_REST_SERVER_URL
-        function: stop
-        deployment_name: /wercker-sg-meetup
+# deploy-occs:
+#  steps:
+#    - peternagy/oracle-occs-container-util:
+#        occs_user: $OCCS_USERNAME
+#        occs_password: $OCCS_PASSWORD
+#        rest_server_url: $OCCS_REST_SERVER_URL
+#        function: stop
+#        deployment_name: /wercker-sg-meetup
  
