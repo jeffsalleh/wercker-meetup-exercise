@@ -8,7 +8,7 @@ dev:
     - internal/watch:
         code: |
           go build -o wercker-sample ./src/...
-          ./source
+          ./wercker-sample
         reload: true
 
 # Build definition
@@ -30,17 +30,16 @@ build:
         name: go test
         code: |
           go test ./src/...
-
+              
 # Deployment push to dockerhub
 push-docker:
-  steps:    
+  steps:
     - internal/docker-push:
         username: $dockerhub_username
         password: $dockerhub_password
         repository: $dockerhub_username/wercker-sg-meetup
         ports: "8080"
         registry: https://registry.hub.docker.com/v2
-        entrypoint: "/bin/bash ./wercker-sample"
 
 # Deploy to some container cloud (Google)
 
@@ -52,12 +51,8 @@ deploy-occs:
         occs_password: $OCCS_PASSWORD
         rest_server_url: $OCCS_REST_SERVER_URL
         function: stop
-        deployment_name: $dockerhub_username/wercker-sg-meetup
-        debug: true
-
-# Deploy to Oracle Container Cloud service
-
-# 
+        deployment_name: wercker-meetup
+ 
 
 
 
