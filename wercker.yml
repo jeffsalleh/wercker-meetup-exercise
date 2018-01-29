@@ -38,8 +38,13 @@ build:
           cp source "$WERCKER_OUTPUT_DIR"
           cp source "/go/bin"
 # Deployment push to dockerhub
-push-docker:
+push-dockerhub:  
   steps:
+    - script: 
+        name: change permissions
+        code: |
+          chmod 777 /pipeline/source
+          chmod 777 /go/bin
     - internal/docker-push:
         username: $dockerhub_username
         password: $dockerhub_password
