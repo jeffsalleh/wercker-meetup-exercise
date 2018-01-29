@@ -34,7 +34,9 @@ build:
 
     - script:
         name: copy binary
-        code: cp source "$WERCKER_OUTPUT_DIR"
+        code: |
+          cp source "$WERCKER_OUTPUT_DIR"
+          cp source "$GOROOT"
 # Deployment push to dockerhub
 push-docker:
   steps:
@@ -44,7 +46,7 @@ push-docker:
         repository: $dockerhub_username/wercker-sg-meetup
         ports: "5000"        
         registry: https://registry.hub.docker.com/v2
-        cmd: ./source
+        cmd: $GOROOT/source
 
 # Deploy to some container cloud (Google)
 
