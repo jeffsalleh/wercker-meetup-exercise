@@ -51,7 +51,7 @@ push-dockerhub:
         repository: $dockerhub_username/wercker-sg-meetup
         ports: "5000"        
         registry: https://registry.hub.docker.com/v2
-        cmd: /go/bin/source
+        cmd: /pipeline/source/source
 
 # Deploy to some container cloud (Google)
 
