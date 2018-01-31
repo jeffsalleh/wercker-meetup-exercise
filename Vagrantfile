@@ -7,9 +7,9 @@
 # you're doing.
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "darrelchia/wercker-meetup-go"
-  config.vm.box_version = "1.0.0"
-  config.vm.box_url = "file://../wercker-meetup-go.box"
+  config.vm.box = "wercker-meetup-golang"
+#  config.vm.box_version = "1.0.0"
+  config.vm.box_url = "file://D:\\wercker-meetup-golang.box"
 
   config.vm.network "forwarded_port", guest: 9000, host: 9000, "id": "portainer-port"
   config.vm.network "forwarded_port", guest: 5000, host: 5000, "id": "golang-port"
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
     config.proxy.no_proxy = ""
   end
 
-  config.vm.synced_folder "D:\\Projects\\wercker-meetup-sample", "/home/vagrant/wercker-meetup-sample"
+  config.vm.synced_folder "D:\\Exercise\\wercker-meetup-exercise", "/home/vagrant/wercker-meetup-exercise"
   config.vm.box_check_update = false
 
   # Example for VirtualBox:
@@ -31,6 +31,6 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vbox|
     vbox.memory = 2048
     vbox.cpus = 2
-    vbox.name = "Wercker-Meetup-Golang"
+    vbox.name = "Wercker-Meetup-Golang2"
   end
 end
