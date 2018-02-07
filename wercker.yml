@@ -35,14 +35,14 @@ push-docker:
         ports: "5000"
         cmd: "/pipeline/source/wercker-example"
 
-#occs-restart:
-#  steps:
-#      # Manage Oracle Container Cloud Service container
-#    - peternagy/oracle-occs-container-util:
-#        occs_user: $OCCS_USERNAME
-#        occs_password: $OCCS_PASSWORD
-#        rest_server_url: $REST_SERVER_URL
-#        function: stop
-#        deployment_name: $DEPLOYMENT_NAME 
+occs-restart:
+  steps:
+      # Manage Oracle Container Cloud Service container
+    - peternagy/oracle-occs-container-util:
+        occs_user: $OCCS_USERNAME
+        occs_password: $OCCS_PASSWORD
+        rest_server_url: $REST_SERVER_URL
+        function: stop
+        deployment_name: $DEPLOYMENT_NAME 
 
 
