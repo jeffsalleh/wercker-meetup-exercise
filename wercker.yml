@@ -24,16 +24,16 @@ dev:
           ./wercker-example
           reload: true
 
-#push:
-#  steps:
-#    - internal/docker-push:
-#        username: $DOCKER_USERNAME
-#        password: $DOCKER_PASSWORD
-#        tag: latest
-#        repository: $DOCKER_USERNAME/wercker-example
-#        registry: https://index.docker.io/v2
-#        ports: "5000"
-#        cmd: "/pipeline/source/wercker-example"
+push-docker:
+  steps:
+    - internal/docker-push:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        tag: latest
+        repository: $DOCKER_USERNAME/wercker-example
+        registry: https://index.docker.io/v2
+        ports: "5000"
+        cmd: "/pipeline/source/wercker-example"
 
 #occs-restart:
 #  steps:
