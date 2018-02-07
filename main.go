@@ -12,7 +12,7 @@ type citiesResponse struct {
 
 func cityHandler(res http.ResponseWriter, req *http.Request) {
 	cities := citiesResponse{
-		Cities: []string{"Amsterdam", "Berlin", "New York", "San Francisco", "Tokyo", "Singapore", "Malaysia"}}
+		Cities: []string{"Amsterdam", "Berlin", "New York", "San Francisco", "Tokyo", "Singapore", "london", "Malaysia"}}
 
 	res.Header().Set("Content-Type", "application/json; charset=utf-8")
 	json.NewEncoder(res).Encode(cities)
